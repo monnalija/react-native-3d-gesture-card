@@ -28,8 +28,8 @@ npm install react-native-gesture-handler react-native-reanimated
 ```
 
 Follow the installation instructions for:
-- [react-native-gesture-handler](https://docs.swmansion.com/react-native-gesture-handler/docs/installation)
-- [react-native-reanimated](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation)
+- [react-native-gesture-handler](https://docs.swmansion.com/react-native-gesture-handler/docs/fundamentals/installation)
+- [react-native-reanimated](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/getting-started)
 
 ## Usage
 
@@ -102,6 +102,71 @@ export default function App() {
   );
 }
 ```
+
+### In ScrollView Example
+
+When using the Card3D component inside a scrollable view, you **must** use the `ScrollView` from `react-native-gesture-handler` instead of the default React Native `ScrollView` to ensure proper gesture handling.
+
+```tsx
+import React from 'react';
+import { View, Text } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler'; // Important: Use this instead of React Native's ScrollView
+import { Card3D } from 'react-native-3d-gesture-card';
+
+export default function App() {
+  return (
+    <ScrollView
+      contentContainerStyle={{
+        alignItems: 'center',
+        paddingVertical: 50,
+        gap: 30
+      }}
+    >
+      <Card3D
+        width={250}
+        height={350}
+        backgroundColor="#ffffff"
+        shadowLevel={3}
+        showFlipButton={true}
+      >
+        <View style={{ padding: 20 }}>
+          <Text style={{ fontSize: 24, fontWeight: 'bold' }}>Card 1</Text>
+          <Text>This card works properly in ScrollView</Text>
+        </View>
+      </Card3D>
+
+      <Card3D
+        width={250}
+        height={350}
+        backgroundColor="#f0f0f0"
+        shadowLevel={5}
+        showFlipButton={true}
+        flipButtonPosition="top-left"
+      >
+        <View style={{ padding: 20 }}>
+          <Text style={{ fontSize: 24, fontWeight: 'bold' }}>Card 2</Text>
+          <Text>Multiple cards in ScrollView</Text>
+        </View>
+      </Card3D>
+
+      <Card3D
+        width={250}
+        height={350}
+        backgroundColor="#e8e8e8"
+        shadowLevel={2}
+        gestureSensitivity={5}
+      >
+        <View style={{ padding: 20 }}>
+          <Text style={{ fontSize: 24, fontWeight: 'bold' }}>Card 3</Text>
+          <Text>Scroll and gesture both work smoothly</Text>
+        </View>
+      </Card3D>
+    </ScrollView>
+  );
+}
+```
+
+**Important Note**: Always use `ScrollView` from `react-native-gesture-handler` when the Card3D component is inside a scrollable container. Using the default React Native `ScrollView` may cause gesture conflicts.
 
 ## API Reference
 

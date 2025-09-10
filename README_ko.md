@@ -26,8 +26,8 @@ npm install react-native-gesture-handler react-native-reanimated
 ```
 
 다음 설치 가이드를 따라주세요:
-- [react-native-gesture-handler](https://docs.swmansion.com/react-native-gesture-handler/docs/installation)
-- [react-native-reanimated](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation)
+- [react-native-gesture-handler](https://docs.swmansion.com/react-native-gesture-handler/docs/fundamentals/installation)
+- [react-native-reanimated](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/getting-started)
 
 ## 사용법
 
@@ -101,6 +101,71 @@ export default function App() {
 }
 ```
 
+### ScrollView 내부 사용 예제
+
+Card3D 컴포넌트를 스크롤 가능한 뷰 내부에서 사용할 때는 제스처 처리를 위해 기본 React Native의 `ScrollView` 대신 `react-native-gesture-handler`의 `ScrollView`를 **반드시** 사용해야 합니다.
+
+```tsx
+import React from 'react';
+import { View, Text } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler'; // 중요: React Native의 ScrollView 대신 이것을 사용하세요
+import { Card3D } from 'react-native-3d-gesture-card';
+
+export default function App() {
+  return (
+    <ScrollView
+      contentContainerStyle={{
+        alignItems: 'center',
+        paddingVertical: 50,
+        gap: 30
+      }}
+    >
+      <Card3D
+        width={250}
+        height={350}
+        backgroundColor="#ffffff"
+        shadowLevel={3}
+        showFlipButton={true}
+      >
+        <View style={{ padding: 20 }}>
+          <Text style={{ fontSize: 24, fontWeight: 'bold' }}>카드 1</Text>
+          <Text>이 카드는 ScrollView에서 제대로 작동합니다</Text>
+        </View>
+      </Card3D>
+
+      <Card3D
+        width={250}
+        height={350}
+        backgroundColor="#f0f0f0"
+        shadowLevel={5}
+        showFlipButton={true}
+        flipButtonPosition="top-left"
+      >
+        <View style={{ padding: 20 }}>
+          <Text style={{ fontSize: 24, fontWeight: 'bold' }}>카드 2</Text>
+          <Text>ScrollView에서 여러 카드 사용</Text>
+        </View>
+      </Card3D>
+
+      <Card3D
+        width={250}
+        height={350}
+        backgroundColor="#e8e8e8"
+        shadowLevel={2}
+        gestureSensitivity={5}
+      >
+        <View style={{ padding: 20 }}>
+          <Text style={{ fontSize: 24, fontWeight: 'bold' }}>카드 3</Text>
+          <Text>스크롤과 제스처가 모두 부드럽게 작동합니다</Text>
+        </View>
+      </Card3D>
+    </ScrollView>
+  );
+}
+```
+
+**중요한 주의사항**: Card3D 컴포넌트가 스크롤 가능한 컨테이너 내부에 있을 때는 항상 `react-native-gesture-handler`의 `ScrollView`를 사용하세요. 기본 React Native의 `ScrollView`를 사용하면 제스처 충돌이 발생할 수 있습니다.
+
 ## API 레퍼런스
 
 ### Props
@@ -136,15 +201,6 @@ export default function App() {
 import { Card3D, Card3DRef, Card3DProps } from 'react-native-3d-gesture-card';
 ```
 
-## 3D 회전 동작
-
-이 컴포넌트는 특별한 3D 회전 로직을 사용합니다:
-
-1. **한 축만 90도 이상 회전**: 뒷면 표시
-2. **두 축 모두 90도 미만**: 앞면 표시
-3. **두 축 모두 90도 이상**: 뒤집어진 앞면 표시 (실제 3D 카드처럼)
-
-이는 실제 카드를 회전시키는 것과 같은 자연스러운 경험을 제공합니다.
 
 ## 기여하기
 
