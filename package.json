@@ -1,6 +1,6 @@
 {
   "name": "react-native-3d-gesture-card",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "react-native-3d-gesture-card",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
