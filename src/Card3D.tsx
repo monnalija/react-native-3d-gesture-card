@@ -1,10 +1,5 @@
 import React, { useState, forwardRef, useImperativeHandle } from 'react';
-import {
-  StyleSheet,
-  type ViewStyle,
-  TouchableOpacity,
-  Text,
-} from 'react-native';
+import { StyleSheet, TouchableOpacity, Text } from 'react-native';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -16,33 +11,7 @@ import {
   GestureHandlerRootView,
 } from 'react-native-gesture-handler';
 
-// ref를 통해 노출할 메서드들의 인터페이스
-export interface Card3DRef {
-  flip: () => void;
-  isFlipped: () => boolean;
-}
-
-export interface Card3DProps {
-  width?: number;
-  height?: number;
-  children?: React.ReactNode;
-  backContent?: React.ReactNode; // 뒷면 컨텐츠
-  backgroundColor?: string;
-  borderRadius?: number;
-  zIndex?: number;
-  shadowLevel?: number; // 0-10 단계
-  customShadowColor?: string; // iOS용 커스텀 그림자 색상
-  showFlipButton?: boolean; // 뒤집기 버튼 표시 여부
-  flipButtonPosition?:
-    | 'top-right'
-    | 'top-left'
-    | 'bottom-right'
-    | 'bottom-left';
-  onFlip?: (isFlipped: boolean) => void; // 뒤집기 콜백
-  customFlipButton?: React.ReactNode; // 커스텀 뒤집기 버튼 컴포넌트
-  gestureSensitivity?: number; // 제스처 민감도 (기본값: 7, 낮을수록 민감)
-  style?: ViewStyle;
-}
+import type { Card3DRef, Card3DProps } from './types';
 
 // shadowLevel에 따른 그림자 스타일 생성 함수
 const getShadowStyle = (level: number, customColor?: string) => {
