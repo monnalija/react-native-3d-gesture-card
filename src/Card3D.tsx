@@ -9,7 +9,6 @@ import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withSpring,
-  interpolate,
 } from 'react-native-reanimated';
 import {
   Gesture,
@@ -184,17 +183,45 @@ export const Card3D = forwardRef<Card3DRef, Card3DProps>(
       ],
     }));
 
-    // 앞면/뒷면 컨텐츠 결정
-    const frontOpacity = useAnimatedStyle(() => ({
-      opacity: interpolate(flipRotation.value, [0, 90, 180], [1, 0, 0]),
-      transform: [{ rotateY: '0deg' }],
-    }));
+    // 앞면/뒷면 컨텐츠 결정 (3D 회전 조합 고려)
+    const frontOpacity = useAnimatedStyle(() => {
+      const rotYTotal = Math.abs((rotateY.value + flipRotation.value) % 360);
+      const rotXTotal = Math.abs(rotateX.value % 360);
 
-    const backOpacity = useAnimatedStyle(() => ({
-      opacity: interpolate(flipRotation.value, [0, 90, 180], [0, 0, 1]),
-      transform: [{ rotateY: '180deg' }],
-      position: 'absolute' as const,
-    }));
+      const normalizedRotY = rotYTotal > 180 ? 360 - rotYTotal : rotYTotal;
+      const normalizedRotX = rotXTotal > 180 ? 360 - rotXTotal : rotXTotal;
+
+      const isYOver90 = normalizedRotY >= 90;
+      const isXOver90 = normalizedRotX >= 90;
+
+      // 두 축 모두 90도 이상 OR 두 축 모두 90도 미만일 때 앞면 표시
+      const showFront = (isYOver90 && isXOver90) || (!isYOver90 && !isXOver90);
+
+      return {
+        opacity: showFront ? 1 : 0,
+        transform: [{ rotateY: '0deg' }],
+      };
+    });
+
+    const backOpacity = useAnimatedStyle(() => {
+      const rotYTotal = Math.abs((rotateY.value + flipRotation.value) % 360);
+      const rotXTotal = Math.abs(rotateX.value % 360);
+
+      const normalizedRotY = rotYTotal > 180 ? 360 - rotYTotal : rotYTotal;
+      const normalizedRotX = rotXTotal > 180 ? 360 - rotXTotal : rotXTotal;
+
+      const isYOver90 = normalizedRotY >= 90;
+      const isXOver90 = normalizedRotX >= 90;
+
+      // 한 축만 90도 이상일 때 뒷면 표시
+      const showBack = (isYOver90 && !isXOver90) || (!isYOver90 && isXOver90);
+
+      return {
+        opacity: showBack ? 1 : 0,
+        transform: [{ rotateY: '180deg' }],
+        position: 'absolute' as const,
+      };
+    });
 
     // 뒤집기 버튼 위치 스타일
     const getFlipButtonStyle = () => {

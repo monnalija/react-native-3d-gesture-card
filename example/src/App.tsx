@@ -33,7 +33,7 @@ export default function App() {
         height={280}
         showFlipButton={true}
         flipButtonPosition="top-right"
-        gestureSensitivity={5} // 더 민감하게 (기본값 7보다 낮음)
+        gestureSensitivity={1} // 더 민감하게 (기본값 7보다 낮음)
         customFlipButton={
           <View
             style={{
