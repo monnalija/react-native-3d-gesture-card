@@ -1,15 +1,11 @@
 import React, { useState, forwardRef, useImperativeHandle } from 'react';
-import { StyleSheet, TouchableOpacity, Text } from 'react-native';
+import { StyleSheet, TouchableOpacity, Image } from 'react-native';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withSpring,
 } from 'react-native-reanimated';
-import {
-  Gesture,
-  GestureDetector,
-  GestureHandlerRootView,
-} from 'react-native-gesture-handler';
+import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 
 import type { Card3DRef, Card3DProps } from './types';
 
@@ -268,7 +264,10 @@ export const Card3D = forwardRef<Card3DRef, Card3DProps>(
                   onPress={handleFlip}
                   activeOpacity={0.8}
                 >
-                  <Text style={styles.flipButtonText}>↻</Text>
+                  <Image
+                    source={require('./icons/rotating-arrow-to-the-right.png')}
+                    style={styles.flipButtonIcon}
+                  />
                 </TouchableOpacity>
               )}
             </Animated.View>
@@ -296,5 +295,10 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  flipButtonIcon: {
+    width: 14,
+    height: 14,
+    tintColor: 'white',
   },
 });
