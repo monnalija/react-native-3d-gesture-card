@@ -241,52 +241,45 @@ export const Card3D = forwardRef<Card3DRef, Card3DProps>(
 
     // GestureHandlerRootView를 내부적으로 제공하여 사용자 설정 불필요
     return (
-      <GestureHandlerRootView style={styles.container}>
-        <GestureDetector gesture={panGesture}>
-          <Animated.View style={[cardStyle, style, animatedStyle]}>
-            {/* 앞면 컨텐츠 */}
-            <Animated.View style={frontOpacity}>{children}</Animated.View>
+      <GestureDetector gesture={panGesture}>
+        <Animated.View style={[cardStyle, style, animatedStyle]}>
+          {/* 앞면 컨텐츠 */}
+          <Animated.View style={frontOpacity}>{children}</Animated.View>
 
-            {/* 뒷면 컨텐츠 (backContent가 있을 때만) */}
-            {backContent && (
-              <Animated.View style={backOpacity}>{backContent}</Animated.View>
-            )}
+          {/* 뒷면 컨텐츠 (backContent가 있을 때만) */}
+          {backContent && (
+            <Animated.View style={backOpacity}>{backContent}</Animated.View>
+          )}
 
-            {/* 뒤집기 버튼 - 제스처는 따라가지만 flip rotation만 상쇄 */}
-            {showFlipButton && (
-              <Animated.View
-                style={[getFlipButtonStyle(), buttonAnimatedStyle]}
-              >
-                {customFlipButton ? (
-                  <TouchableOpacity
-                    style={styles.customButtonContainer}
-                    onPress={handleFlip}
-                    activeOpacity={0.8}
-                  >
-                    {customFlipButton}
-                  </TouchableOpacity>
-                ) : (
-                  <TouchableOpacity
-                    style={styles.defaultButtonContainer}
-                    onPress={handleFlip}
-                    activeOpacity={0.8}
-                  >
-                    <Text style={styles.flipButtonText}>↻</Text>
-                  </TouchableOpacity>
-                )}
-              </Animated.View>
-            )}
-          </Animated.View>
-        </GestureDetector>
-      </GestureHandlerRootView>
+          {/* 뒤집기 버튼 - 제스처는 따라가지만 flip rotation만 상쇄 */}
+          {showFlipButton && (
+            <Animated.View style={[getFlipButtonStyle(), buttonAnimatedStyle]}>
+              {customFlipButton ? (
+                <TouchableOpacity
+                  style={styles.customButtonContainer}
+                  onPress={handleFlip}
+                  activeOpacity={0.8}
+                >
+                  {customFlipButton}
+                </TouchableOpacity>
+              ) : (
+                <TouchableOpacity
+                  style={styles.defaultButtonContainer}
+                  onPress={handleFlip}
+                  activeOpacity={0.8}
+                >
+                  <Text style={styles.flipButtonText}>↻</Text>
+                </TouchableOpacity>
+              )}
+            </Animated.View>
+          )}
+        </Animated.View>
+      </GestureDetector>
     );
   }
 );
 
 const styles = StyleSheet.create({
-  container: {
-    // zIndex: 1,
-  },
   defaultButtonContainer: {
     width: '100%',
     height: '100%',
