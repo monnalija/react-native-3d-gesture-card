@@ -66,8 +66,8 @@ export interface Card3DProps {
   zIndex?: number;
 
   /**
-   * 그림자 레벨 (0-10 단계, 기본값: 1)
-   * Shadow level (0-10 scale, default: 1)
+   * 그림자 레벨 (0-10 단계, 기본값: 1, iOS 전용)
+   * Shadow level (0-10 scale, default: 1, iOS only)
    */
   shadowLevel?: number;
 

@@ -116,7 +116,7 @@ export default function App() {
 | `backgroundColor` | `string` | `'#fff'` | Background color of the card |
 | `borderRadius` | `number` | `16` | Corner radius of the card |
 | `zIndex` | `number` | `1` | Z-index of the card |
-| `shadowLevel` | `number` | `1` | Shadow intensity (0-10) |
+| `shadowLevel` | `number` | `1` | Shadow intensity (0-10, iOS only) |
 | `customShadowColor` | `string` | - | Custom shadow color (iOS only) |
 | `showFlipButton` | `boolean` | `false` | Show the flip button on the card |
 | `flipButtonPosition` | `'top-right' \| 'top-left' \| 'bottom-right' \| 'bottom-left'` | `'top-right'` | Position of the flip button |

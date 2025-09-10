@@ -114,7 +114,7 @@ export default function App() {
 | `backgroundColor` | `string` | `'#fff'` | 카드의 배경색 |
 | `borderRadius` | `number` | `16` | 카드의 모서리 둥글기 |
 | `zIndex` | `number` | `1` | 카드의 z-index |
-| `shadowLevel` | `number` | `1` | 그림자 강도 (0-10) |
+| `shadowLevel` | `number` | `1` | 그림자 강도 (0-10, iOS 전용) |
 | `customShadowColor` | `string` | - | 커스텀 그림자 색상 (iOS 전용) |
 | `showFlipButton` | `boolean` | `false` | 카드에 플립 버튼 표시 여부 |
 | `flipButtonPosition` | `'top-right' \| 'top-left' \| 'bottom-right' \| 'bottom-left'` | `'top-right'` | 플립 버튼의 위치 |

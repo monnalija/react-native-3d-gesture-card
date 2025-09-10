@@ -9,6 +9,12 @@ import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 
 import type { Card3DRef, Card3DProps } from './types';
 
+/**
+ * Todo :
+ * [android]
+ * - elevation이 아닌 다른 방법으로 그림자를 구현하여 3d animation이 제대로 작동하도록 수정
+ */
+
 // shadowLevel에 따른 그림자 스타일 생성 함수
 const getShadowStyle = (level: number, customColor?: string) => {
   if (level === 0) return {};
@@ -20,70 +26,70 @@ const getShadowStyle = (level: number, customColor?: string) => {
       shadowOffset: { width: 0, height: 1 },
       shadowOpacity: 0.18,
       shadowRadius: 1.0,
-      elevation: 1,
+      // elevation: 1,
     },
     {
       shadowColor: customColor || '#000',
       shadowOffset: { width: 0, height: 1 },
       shadowOpacity: 0.2,
       shadowRadius: 1.41,
-      elevation: 2,
+      // elevation: 2,
     },
     {
       shadowColor: customColor || '#000',
       shadowOffset: { width: 0, height: 1 },
       shadowOpacity: 0.22,
       shadowRadius: 2.22,
-      elevation: 3,
+      // elevation: 3,
     },
     {
       shadowColor: customColor || '#000',
       shadowOffset: { width: 0, height: 2 },
       shadowOpacity: 0.23,
       shadowRadius: 2.62,
-      elevation: 4,
+      // elevation: 4,
     },
     {
       shadowColor: customColor || '#000',
       shadowOffset: { width: 0, height: 2 },
       shadowOpacity: 0.25,
       shadowRadius: 3.84,
-      elevation: 5,
+      // elevation: 5,
     },
     {
       shadowColor: customColor || '#000',
       shadowOffset: { width: 0, height: 3 },
       shadowOpacity: 0.27,
       shadowRadius: 4.65,
-      elevation: 6,
+      // elevation: 6,
     },
     {
       shadowColor: customColor || '#000',
       shadowOffset: { width: 0, height: 3 },
       shadowOpacity: 0.29,
       shadowRadius: 4.65,
-      elevation: 7,
+      // elevation: 7,
     },
     {
       shadowColor: customColor || '#000',
       shadowOffset: { width: 0, height: 4 },
       shadowOpacity: 0.3,
       shadowRadius: 5.46,
-      elevation: 8,
+      // elevation: 8,
     },
     {
       shadowColor: customColor || '#000',
       shadowOffset: { width: 0, height: 4 },
       shadowOpacity: 0.32,
       shadowRadius: 5.46,
-      elevation: 9,
+      // elevation: 9,
     },
     {
       shadowColor: customColor || '#000',
       shadowOffset: { width: 0, height: 5 },
       shadowOpacity: 0.34,
       shadowRadius: 6.27,
-      elevation: 10,
+      // elevation: 10,
     },
   ];
 
