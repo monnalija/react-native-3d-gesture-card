@@ -41,6 +41,7 @@ export interface Card3DProps {
     | 'bottom-left';
   onFlip?: (isFlipped: boolean) => void; // 뒤집기 콜백
   customFlipButton?: React.ReactNode; // 커스텀 뒤집기 버튼 컴포넌트
+  gestureSensitivity?: number; // 제스처 민감도 (기본값: 7, 낮을수록 민감)
   style?: ViewStyle;
 }
 
@@ -141,6 +142,7 @@ export const Card3D = forwardRef<Card3DRef, Card3DProps>(
       flipButtonPosition = 'top-right',
       onFlip,
       customFlipButton,
+      gestureSensitivity = 7,
       style,
     },
     ref
@@ -158,8 +160,8 @@ export const Card3D = forwardRef<Card3DRef, Card3DProps>(
 
     const panGesture = Gesture.Pan()
       .onChange((event) => {
-        rotateX.value = withSpring(event.translationY / 7);
-        rotateY.value = withSpring(-event.translationX / 7);
+        rotateX.value = withSpring(event.translationY / gestureSensitivity);
+        rotateY.value = withSpring(-event.translationX / gestureSensitivity);
       })
       .onEnd(() => {
         rotateX.value = withSpring(0);

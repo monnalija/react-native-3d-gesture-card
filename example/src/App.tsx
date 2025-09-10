@@ -33,9 +33,19 @@ export default function App() {
         height={280}
         showFlipButton={true}
         flipButtonPosition="top-right"
+        gestureSensitivity={5} // 더 민감하게 (기본값 7보다 낮음)
         customFlipButton={
-          <View style={styles.customButton}>
-            <Text style={styles.customButtonText}>🔄</Text>
+          <View
+            style={{
+              backgroundColor: 'red',
+              borderRadius: 15,
+              width: 30,
+              height: 30,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <Text style={{ color: 'white', fontSize: 16 }}>🔄</Text>
           </View>
         }
         backContent={
