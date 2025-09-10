@@ -1,4 +1,4 @@
-import React, { useState, forwardRef, useImperativeHandle } from 'react';
+import { useState, forwardRef, useImperativeHandle } from 'react';
 import { StyleSheet, TouchableOpacity, Image } from 'react-native';
 import Animated, {
   useSharedValue,
