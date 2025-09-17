@@ -17,22 +17,22 @@ export default function App() {
   return (
     <GestureHandlerRootView>
       <ScrollView contentContainerStyle={styles.container}>
-        {/* ref를 통한 외부 제어 버튼 */}
+        {/* External control button via ref */}
         <TouchableOpacity
           style={styles.externalButton}
           onPress={handleExternalFlip}
         >
-          <Text style={styles.buttonText}>외부 버튼으로 카드 뒤집기</Text>
+          <Text style={styles.buttonText}>Flip Card with External Button</Text>
         </TouchableOpacity>
 
-        {/* 커스텀 플립 버튼이 있는 카드 */}
+        {/* Card with custom flip button */}
         <Card3D
           ref={cardRef}
           width={200}
           height={280}
           showFlipButton={true}
           flipButtonPosition="top-right"
-          gestureSensitivity={1} // 더 민감하게 (기본값 7보다 낮음)
+          gestureSensitivity={1} // More sensitive (lower than default 7)
           customFlipButton={
             <View style={styles.customButton}>
               <Text style={styles.customButtonText}>🔄</Text>
@@ -40,21 +40,25 @@ export default function App() {
           }
           backContent={
             <View style={styles.cardContent}>
-              <Text style={styles.title}>뒷면!</Text>
-              <Text style={styles.subtitle}>카드가 뒤집혔어요</Text>
-              <Text style={styles.description}>🎉 커스텀 버튼으로 뒤집기!</Text>
+              <Text style={styles.title}>Back Side!</Text>
+              <Text style={styles.subtitle}>Card has been flipped</Text>
+              <Text style={styles.description}>
+                🎉 Flip with custom button!
+              </Text>
             </View>
           }
-          onFlip={(isFlipped) => console.log('카드 뒤집힘:', isFlipped)}
+          onFlip={(isFlipped) => console.log('Card flipped:', isFlipped)}
         >
           <View style={styles.cardContent}>
-            <Text style={styles.title}>앞면 카드</Text>
-            <Text style={styles.subtitle}>뒤집기 버튼 클릭!</Text>
-            <Text style={styles.description}>오른쪽 위 버튼을 눌러보세요</Text>
+            <Text style={styles.title}>Front Card</Text>
+            <Text style={styles.subtitle}>Click flip button!</Text>
+            <Text style={styles.description}>
+              Press the button in the top right
+            </Text>
           </View>
         </Card3D>
 
-        {/* 커스텀 스타일 카드 1 - shadowLevel 8 + 빨간 그림자 */}
+        {/* Custom style card 1 - shadowLevel 8 + red shadow */}
         <Card3D
           width={200}
           height={280}
@@ -66,23 +70,23 @@ export default function App() {
           flipButtonPosition="top-right"
           // backContent={
           //   <View style={styles.cardContent}>
-          //     <Text style={styles.title}>뒷면!</Text>
-          //     <Text style={styles.subtitle}>카드가 뒤집혔어요</Text>
+          //     <Text style={styles.title}>Back Side!</Text>
+          //     <Text style={styles.subtitle}>Card has been flipped</Text>
           //     <Text style={styles.description}>
-          //       🎉 플립 애니메이션이 작동합니다
+          //       🎉 Flip animation is working
           //     </Text>
           //   </View>
           // }
         >
           <View style={styles.cardContent}>
-            <Text style={[styles.title, styles.whiteText]}>빨간 카드</Text>
+            <Text style={[styles.title, styles.whiteText]}>Red Card</Text>
             <Text style={[styles.subtitle, styles.whiteText]}>
               Level 8 Shadow
             </Text>
           </View>
         </Card3D>
 
-        {/* 커스텀 스타일 카드 2 - shadowLevel 10 + 청록 그림자 */}
+        {/* Custom style card 2 - shadowLevel 10 + teal shadow */}
         <Card3D
           width={200}
           height={280}
@@ -93,14 +97,14 @@ export default function App() {
           style={styles.tiltedCard}
         >
           <View style={styles.cardContent}>
-            <Text style={[styles.title, styles.whiteText]}>청록 카드</Text>
+            <Text style={[styles.title, styles.whiteText]}>Teal Card</Text>
             <Text style={[styles.subtitle, styles.whiteText]}>
               Level 10 Shadow
             </Text>
           </View>
         </Card3D>
 
-        {/* shadowLevel 0 카드 */}
+        {/* shadowLevel 0 card */}
         <Card3D
           width={200}
           height={280}
@@ -109,7 +113,7 @@ export default function App() {
           shadowLevel={0}
         >
           <View style={styles.cardContent}>
-            <Text style={[styles.title, styles.darkText]}>그림자 없음</Text>
+            <Text style={[styles.title, styles.darkText]}>No Shadow</Text>
             <Text style={[styles.subtitle, styles.grayText]}>Level 0</Text>
           </View>
         </Card3D>
