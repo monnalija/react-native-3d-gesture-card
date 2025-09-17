@@ -31,6 +31,13 @@ Follow the installation instructions for:
 - [react-native-gesture-handler](https://docs.swmansion.com/react-native-gesture-handler/docs/fundamentals/installation)
 - [react-native-reanimated](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/getting-started)
 
+## Demo Video
+
+<video width="100%" controls>
+  <source src="https://github.com/user-attachments/assets/sample.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
 ## Usage
 
 ### Basic Example
