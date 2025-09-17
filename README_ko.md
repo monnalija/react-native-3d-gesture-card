@@ -31,10 +31,7 @@ npm install react-native-gesture-handler react-native-reanimated
 
 ## 예제 영상
 
-<video width="100%" controls>
-  <source src="https://github.com/monnalija/react-native-3d-gesture-card/blob/main/example/assets/sample.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="./example/assets/sample.gif" alt="Demo" width="300">
 
 ## 사용법
 
